@@ -16,11 +16,11 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRepositoryTest {
-	
-	@Autowired 
-	UserRepository repository;
-	
-	User user;
+
+	@Autowired
+	private UserRepository repository;
+
+	private User user;
 
 	@Before
 	public void setUp() {

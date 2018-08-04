@@ -17,3 +17,6 @@ hs_err_pid*
 /.classpath
 /jayden-test-app.iml
 /JTA.iml
+
+# IntellliJ
+.idea

@@ -16,9 +16,10 @@ public class User extends AbstractPersistable<Long> {
     @GeneratedValue
     private long id;
 
-    @Column(unique = true)
+    @Column
     private String name;
 
+    @Column
     private int age;
 
     @Override
