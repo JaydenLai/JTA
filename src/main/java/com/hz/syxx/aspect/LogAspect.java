@@ -23,6 +23,9 @@ public class LogAspect {
     @Pointcut("execution(* com.hz.syxx.controller..HelloWorldController.sayHi(..))")
     public void sayHiLog(){}
 
+    @Pointcut("execution(* com.hz.syxx.controller..HelloWorldController.sayNothing(..))")
+    public void sayNothingLog(){}
+
     @Before("commonLog()")
     public void logBefore(JoinPoint joinPoint){
         Signature signature = joinPoint.getSignature();
@@ -42,6 +45,17 @@ public class LogAspect {
         String returnStr = (String) proceedingJoinPoint.proceed();
         logger.info("Log Around after method: {}",signature.getName());
         return returnStr;
+    }
+
+    @AfterReturning(pointcut = "sayHiLog()", returning = "returnVal")
+    public void logAfterReturning(JoinPoint joinPoint,String returnVal){
+        logger.info("Log AfterReturning method: {}, return value: {}",joinPoint.getSignature().getName(),returnVal);
+    }
+
+    //generally should log info in class instead of aspect
+    @AfterThrowing(pointcut = "sayNothingLog()",throwing = "e")
+    public void logAfterThrowing(JoinPoint joinPoint,Throwable e){
+        logger.info("Log AfterThrowing method: {}, exception msg: {}",joinPoint.getSignature().getName(),e.getMessage());
     }
 
 }

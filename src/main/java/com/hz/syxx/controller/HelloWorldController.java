@@ -24,4 +24,9 @@ public class HelloWorldController {
         logger.info("Hi, {}",name);
         return "Hi, "+name;
     }
+
+    @GetMapping("/sayNothing")
+    public void sayNothing(@RequestParam String name) throws Exception {
+        throw new Exception("Don't wanna see your face and throw a exception");
+    }
 }
