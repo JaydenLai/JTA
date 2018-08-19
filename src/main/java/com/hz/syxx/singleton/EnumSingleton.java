@@ -24,17 +24,17 @@ public class EnumSingleton {
     private enum Singleton{
         INSTANCE;
 
-        private EnumSingleton singleton;
+        private EnumSingleton enumSingleton;
 
         /**
          * JVM to ensure this method will only be called once
          */
         Singleton(){
-            singleton = new EnumSingleton();
+            enumSingleton = new EnumSingleton();
         }
 
         public EnumSingleton getSingleton(){
-            return singleton;
+            return enumSingleton;
         }
     }
 }
